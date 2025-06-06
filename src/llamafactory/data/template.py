@@ -1872,12 +1872,3 @@ register_template(
     stop_words=["<|im_end|>"],
 )
 
-# copied from chatml template
-register_template(
-    name="smollm2",
-    format_user=StringFormatter(slots=["<|im_start|>user\n{{content}}<|im_end|>\n<|im_start|>assistant\n"]),
-    format_assistant=StringFormatter(slots=["{{content}}<|im_end|>\n"]),
-    format_system=StringFormatter(slots=["<|im_start|>system\n{{content}}<|im_end|>\n"]),
-    default_system="You are a helpful AI assistant named SmolLM, trained by Hugging Face",
-    stop_words=["<|im_end|>"],
-)
