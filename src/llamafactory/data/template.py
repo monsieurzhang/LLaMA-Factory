@@ -264,7 +264,7 @@ class Template:
 
     def fix_jinja_template(self, tokenizer: "PreTrainedTokenizer") -> None:
         r"""Replace the jinja template in the tokenizer."""
-        if tokenizer.chat_template is None or self.replace_jinja_template:
+        if tokenizer.chat_template is None and self.replace_jinja_template:
             try:
                 tokenizer.chat_template = self._get_jinja_template(tokenizer)
             except ValueError as e:
@@ -1870,5 +1870,6 @@ register_template(
     format_assistant=StringFormatter(slots=["{{content}}<|im_end|>\n"]),
     format_system=StringFormatter(slots=["<|im_start|>system\n{{content}}<|im_end|>\n"]),
     stop_words=["<|im_end|>"],
+    replace_jinja_template=True,
 )
 
